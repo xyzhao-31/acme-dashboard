@@ -1,31 +1,3 @@
-/* ===== Dark Theme =====
-   Overrides the light custom properties declared in `:root` (index.css).
-   `:root[data-theme="dark"]` outranks a bare `:root` on specificity, so the
-   override holds regardless of stylesheet order. */
-
-:root[data-theme='dark'] {
-  --bg-primary: #171a21;
-  --bg-secondary: #0e1014;
-  --bg-card: #171a21;
-  --text-primary: #e8eaed;
-  --text-secondary: #9aa3b2;
-  --border: #2a2f3a;
-  --accent: #8b8cf8;
-  --accent-light: #232544;
-  --accent-hover: #a5a6fa;
-  --accent-contrast: #0e1014;
-  --success: #34d399;
-  --success-light: #10281f;
-  --warning: #fbbf24;
-  --danger: #f87171;
-  --review: #a78bfa;
-  --feature: #22d3ee;
-  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --focus-ring: 0 0 0 3px rgba(139, 140, 248, 0.25);
-
-  color-scheme: dark;
-}
-
 /* ===== Layout ===== */
 
 .app-layout {

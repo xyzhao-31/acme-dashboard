@@ -27,16 +27,20 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    try {
-      window.localStorage.setItem(THEME_STORAGE_KEY, theme)
-    } catch {
-      // Persistence is best effort; the theme still applies for this session.
-    }
   }, [theme])
 
+  // Written here rather than in the effect above so that merely visiting the
+  // app never records a preference. A visitor who has not chosen stays
+  // unset, which keeps the door open for honouring the OS setting later.
   const setTheme = useCallback((next) => {
-    if (VALID_THEMES.includes(next)) {
-      setThemeState(next)
+    if (!VALID_THEMES.includes(next)) {
+      return
+    }
+    setThemeState(next)
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, next)
+    } catch {
+      // Persistence is best effort; the theme still applies for this session.
     }
   }, [])
 
