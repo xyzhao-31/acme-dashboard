@@ -64,8 +64,9 @@ describe('Settings page', () => {
     expect(screen.getByText('Save Changes')).toBeTruthy()
   })
 
-  it('shows light theme indicator', () => {
+  it('shows the theme toggle with light selected by default', () => {
     renderApp('/settings')
-    expect(screen.getByText('Light')).toBeTruthy()
+    expect(screen.getByText('Theme')).toBeTruthy()
+    expect(screen.getByLabelText('Light').checked).toBe(true)
   })
 })
