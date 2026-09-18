@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { THEME_OPTIONS, useTheme } from '../ThemeContext.jsx'
 
 function Settings() {
+  const { theme, setTheme } = useTheme()
   const [companyName, setCompanyName] = useState('Acme Corporation')
   const [timezone, setTimezone] = useState('America/New_York')
   const [saved, setSaved] = useState(false)
@@ -50,10 +52,27 @@ function Settings() {
 
         <div className="settings-section">
           <h2>Appearance</h2>
-          <div className="appearance-info">
-            <span className="theme-label">Theme</span>
-            <span className="theme-value">Light</span>
-          </div>
+          <fieldset className="theme-fieldset">
+            <legend className="theme-label">Theme</legend>
+            <div className="theme-options">
+              {THEME_OPTIONS.map((option) => (
+                <label
+                  key={option.value}
+                  className={option.value === theme ? 'theme-option selected' : 'theme-option'}
+                >
+                  <input
+                    type="radio"
+                    name="theme"
+                    value={option.value}
+                    checked={option.value === theme}
+                    onChange={() => setTheme(option.value)}
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="theme-hint">Applies immediately and is remembered on this device.</p>
+          </fieldset>
         </div>
 
         <button type="submit" className="save-button">
