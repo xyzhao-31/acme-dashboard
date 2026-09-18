@@ -21,6 +21,33 @@
   color-scheme: light;
 }
 
+/* Dark theme. Kept directly beneath the light `:root` block on purpose — a new
+   custom property must be added to both, and splitting them across files makes
+   it easy to update one and forget the other. */
+
+:root[data-theme='dark'] {
+  --bg-primary: #171a21;
+  --bg-secondary: #0e1014;
+  --bg-card: #171a21;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa3b2;
+  --border: #2a2f3a;
+  --accent: #8b8cf8;
+  --accent-light: #232544;
+  --accent-hover: #a5a6fa;
+  --accent-contrast: #0e1014;
+  --success: #34d399;
+  --success-light: #10281f;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --review: #a78bfa;
+  --feature: #22d3ee;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --focus-ring: 0 0 0 3px rgba(139, 140, 248, 0.25);
+
+  color-scheme: dark;
+}
+
 * {
   margin: 0;
   padding: 0;
