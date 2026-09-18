@@ -7,9 +7,18 @@
   --border: #e5e7eb;
   --accent: #4f46e5;
   --accent-light: #eef2ff;
+  --accent-hover: #4338ca;
+  --accent-contrast: #ffffff;
   --success: #10b981;
+  --success-light: #ecfdf5;
   --warning: #f59e0b;
   --danger: #ef4444;
+  --review: #8b5cf6;
+  --feature: #06b6d4;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --focus-ring: 0 0 0 3px rgba(79, 70, 229, 0.1);
+
+  color-scheme: light;
 }
 
 * {
