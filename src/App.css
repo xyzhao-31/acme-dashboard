@@ -1,3 +1,30 @@
+/* ===== Dark Theme =====
+   Overrides the light custom properties declared in :root (index.css).
+   Applied by setting data-theme="dark" on the <html> element. */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-primary: #16181d;
+  --bg-secondary: #0f1115;
+  --bg-card: #16181d;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa3ae;
+  --border: #2a2e37;
+  --accent: #818cf8;
+  --accent-light: #262b45;
+  --accent-hover: #a5b4fc;
+  --accent-contrast: #111827;
+  --success: #34d399;
+  --success-soft: #10352a;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --dot-review: #a78bfa;
+  --dot-feature: #22d3ee;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --focus-ring: rgba(129, 140, 248, 0.3);
+}
+
 /* ===== Layout ===== */
 
 .app-layout {
@@ -32,7 +59,7 @@
   width: 32px;
   height: 32px;
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-contrast);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -176,7 +203,7 @@
 }
 
 .metric-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .metric-label {
@@ -265,11 +292,11 @@
 }
 
 .activity-dot.review {
-  background: #8b5cf6;
+  background: var(--dot-review);
 }
 
 .activity-dot.feature {
-  background: #06b6d4;
+  background: var(--dot-feature);
 }
 
 .activity-dot.update {
@@ -312,7 +339,7 @@
 }
 
 .team-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .member-avatar {
@@ -372,7 +399,7 @@
 }
 
 .status-badge.online {
-  background: #ecfdf5;
+  background: var(--success-soft);
   color: var(--success);
 }
 
@@ -432,7 +459,7 @@
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .appearance-info {
@@ -446,18 +473,46 @@
   color: var(--text-secondary);
 }
 
-.theme-value {
+.theme-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.theme-option {
+  font-family: inherit;
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  padding: 6px 14px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  padding: 6px 16px;
   border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-option:hover {
+  color: var(--text-primary);
+}
+
+.theme-option:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.theme-option.selected {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px var(--shadow);
 }
 
 .save-button {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--accent-contrast);
   border: none;
   padding: 10px 24px;
   font-size: 14px;
@@ -469,7 +524,7 @@
 }
 
 .save-button:hover {
-  background: #4338ca;
+  background: var(--accent-hover);
 }
 
 .save-button:active {
