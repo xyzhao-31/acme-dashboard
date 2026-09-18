@@ -1,6 +1,13 @@
 import { useState } from 'react'
+import { useTheme } from '../theme.jsx'
+
+const THEME_OPTIONS = [
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+]
 
 function Settings() {
+  const { theme, setTheme } = useTheme()
   const [companyName, setCompanyName] = useState('Acme Corporation')
   const [timezone, setTimezone] = useState('America/New_York')
   const [saved, setSaved] = useState(false)
@@ -51,8 +58,20 @@ function Settings() {
         <div className="settings-section">
           <h2>Appearance</h2>
           <div className="appearance-info">
-            <span className="theme-label">Theme</span>
-            <span className="theme-value">Light</span>
+            <span className="theme-label" id="theme-label">Theme</span>
+            <div className="theme-toggle" role="group" aria-labelledby="theme-label">
+              {THEME_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  className={theme === option.value ? 'theme-option selected' : 'theme-option'}
+                  aria-pressed={theme === option.value}
+                  onClick={() => setTheme(option.value)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

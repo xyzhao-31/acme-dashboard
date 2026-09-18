@@ -64,8 +64,9 @@ describe('Settings page', () => {
     expect(screen.getByText('Save Changes')).toBeTruthy()
   })
 
-  it('shows light theme indicator', () => {
+  it('offers a light and dark theme choice', () => {
     renderApp('/settings')
-    expect(screen.getByText('Light')).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Light' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Dark' })).toBeTruthy()
   })
 })
