@@ -1,6 +1,31 @@
-/* ===== Dark Theme =====
-   Overrides the light custom properties declared in :root (index.css).
-   Applied by setting data-theme="dark" on the <html> element. */
+/* ===== Theme =====
+   Every colour in this file comes from these custom properties. The light
+   values are the default; the dark block overrides each one and is applied by
+   setting data-theme="dark" on the <html> element. Keep the two lists in step:
+   theme.test.jsx fails if the dark block misses a property. */
+
+:root {
+  color-scheme: light;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --accent: #4f46e5;
+  --accent-light: #eef2ff;
+  --accent-hover: #4338ca;
+  --accent-contrast: #ffffff;
+  --success: #10b981;
+  --success-soft: #ecfdf5;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --dot-review: #8b5cf6;
+  --dot-feature: #06b6d4;
+  --shadow: rgba(0, 0, 0, 0.06);
+  --focus-ring: rgba(79, 70, 229, 0.25);
+}
 
 :root[data-theme="dark"] {
   color-scheme: dark;

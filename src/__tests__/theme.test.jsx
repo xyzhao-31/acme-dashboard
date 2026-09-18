@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import App from '../App.jsx'
-import { THEME_STORAGE_KEY } from '../theme.jsx'
+import { THEME_STORAGE_KEY, THEMES } from '../theme.jsx'
 
 function renderSettings() {
   return render(
@@ -88,20 +88,32 @@ describe('Theme persistence', () => {
   })
 })
 
-describe('Dark theme stylesheet', () => {
-  const readCss = (name) => readFileSync(resolve(process.cwd(), 'src', name), 'utf8')
+describe('Theme definitions', () => {
+  const readFile = (path) => readFileSync(resolve(process.cwd(), path), 'utf8')
 
   const varsIn = (block) => new Set(block.match(/--[\w-]+(?=\s*:)/g) ?? [])
 
   it('overrides every light custom property in a [data-theme="dark"] block', () => {
-    const rootBlock = readCss('index.css').match(/:root\s*\{([^}]*)\}/)[1]
-    const darkMatch = readCss('App.css').match(/\[data-theme="dark"\]\s*\{([^}]*)\}/)
+    const css = readFile('src/App.css')
+    const lightMatch = css.match(/:root\s*\{([^}]*)\}/)
+    const darkMatch = css.match(/\[data-theme="dark"\]\s*\{([^}]*)\}/)
 
+    expect(lightMatch).toBeTruthy()
     expect(darkMatch).toBeTruthy()
 
     const darkVars = varsIn(darkMatch[1])
-    const missing = [...varsIn(rootBlock)].filter((name) => !darkVars.has(name))
+    const missing = [...varsIn(lightMatch[1])].filter((name) => !darkVars.has(name))
     expect(missing).toEqual([])
   })
 
+  it('applies the saved theme before first paint, using the same key and values', () => {
+    const html = readFile('index.html')
+    const inlineScript = html.slice(0, html.indexOf('<body'))
+
+    expect(inlineScript).toContain(THEME_STORAGE_KEY)
+    expect(inlineScript).toContain('data-theme')
+    for (const theme of THEMES) {
+      expect(inlineScript).toContain(`'${theme}'`)
+    }
+  })
 })
