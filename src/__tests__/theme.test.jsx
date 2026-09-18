@@ -63,6 +63,14 @@ describe('Theme toggle', () => {
 })
 
 describe('Theme persistence', () => {
+  it('records nothing until the user actually chooses', () => {
+    renderApp()
+
+    // Visiting must not pre-commit a visitor to light, or a future
+    // "follow the OS setting" default could never apply to them.
+    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe(null)
+  })
+
   it('saves the choice to localStorage', () => {
     renderApp()
     fireEvent.click(screen.getByLabelText('Dark'))
