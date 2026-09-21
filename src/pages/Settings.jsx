@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useTheme } from '../ThemeContext.jsx'
 
 function Settings() {
   const [companyName, setCompanyName] = useState('Acme Corporation')
   const [timezone, setTimezone] = useState('America/New_York')
   const [saved, setSaved] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   function handleSave(e) {
     e.preventDefault()
@@ -51,8 +53,25 @@ function Settings() {
         <div className="settings-section">
           <h2>Appearance</h2>
           <div className="appearance-info">
-            <span className="theme-label">Theme</span>
-            <span className="theme-value">Light</span>
+            <span className="theme-label" id="theme-label">Theme</span>
+            <div className="theme-toggle" role="group" aria-labelledby="theme-label">
+              <button
+                type="button"
+                className={theme === 'light' ? 'theme-option active' : 'theme-option'}
+                aria-pressed={theme === 'light'}
+                onClick={() => setTheme('light')}
+              >
+                Light
+              </button>
+              <button
+                type="button"
+                className={theme === 'dark' ? 'theme-option active' : 'theme-option'}
+                aria-pressed={theme === 'dark'}
+                onClick={() => setTheme('dark')}
+              >
+                Dark
+              </button>
+            </div>
           </div>
         </div>
 
