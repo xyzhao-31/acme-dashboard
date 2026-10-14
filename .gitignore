@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent configs and credentials (must survive demo resets)
+.claude/
+.switchdash/
+.switch/
