@@ -10,6 +10,36 @@
   --success: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
+  --success-light: #ecfdf5;
+  --accent-hover: #4338ca;
+  --on-accent: #ffffff;
+  --focus-ring: rgba(79, 70, 229, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.06);
+  --activity-review: #8b5cf6;
+  --activity-feature: #06b6d4;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg-primary: #161b26;
+  --bg-secondary: #0f131a;
+  --bg-card: #1b2130;
+  --text-primary: #e6e8ee;
+  --text-secondary: #9aa3b2;
+  --border: #2c3446;
+  --accent: #818cf8;
+  --accent-light: #262a4a;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --success-light: #10302a;
+  --accent-hover: #a5b4fc;
+  --on-accent: #0f131a;
+  --focus-ring: rgba(129, 140, 248, 0.25);
+  --card-shadow: rgba(0, 0, 0, 0.4);
+  --activity-review: #a78bfa;
+  --activity-feature: #22d3ee;
+  color-scheme: dark;
 }
 
 * {

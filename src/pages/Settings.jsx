@@ -1,9 +1,13 @@
 import { useState } from 'react'
+import { useTheme } from '../ThemeContext.jsx'
+
+const THEME_LABELS = { light: 'Light', dark: 'Dark' }
 
 function Settings() {
   const [companyName, setCompanyName] = useState('Acme Corporation')
   const [timezone, setTimezone] = useState('America/New_York')
   const [saved, setSaved] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   function handleSave(e) {
     e.preventDefault()
@@ -51,8 +55,21 @@ function Settings() {
         <div className="settings-section">
           <h2>Appearance</h2>
           <div className="appearance-info">
-            <span className="theme-label">Theme</span>
-            <span className="theme-value">Light</span>
+            <span className="theme-label" id="theme-label">Theme</span>
+            <div className="theme-toggle" role="radiogroup" aria-labelledby="theme-label">
+              {Object.entries(THEME_LABELS).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  role="radio"
+                  aria-checked={theme === value}
+                  className="theme-option"
+                  onClick={() => setTheme(value)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

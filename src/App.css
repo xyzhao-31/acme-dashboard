@@ -32,7 +32,7 @@
   width: 32px;
   height: 32px;
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -176,7 +176,7 @@
 }
 
 .metric-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .metric-label {
@@ -265,11 +265,11 @@
 }
 
 .activity-dot.review {
-  background: #8b5cf6;
+  background: var(--activity-review);
 }
 
 .activity-dot.feature {
-  background: #06b6d4;
+  background: var(--activity-feature);
 }
 
 .activity-dot.update {
@@ -312,7 +312,7 @@
 }
 
 .team-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .member-avatar {
@@ -372,7 +372,7 @@
 }
 
 .status-badge.online {
-  background: #ecfdf5;
+  background: var(--success-light);
   color: var(--success);
 }
 
@@ -432,7 +432,7 @@
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .appearance-info {
@@ -441,23 +441,52 @@
   gap: 12px;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.theme-option {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-option:hover {
+  color: var(--text-primary);
+}
+
+.theme-option[aria-checked='true'] {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px var(--card-shadow);
+}
+
+.theme-option:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
 .theme-label {
   font-size: 14px;
   color: var(--text-secondary);
 }
 
-.theme-value {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  padding: 6px 14px;
-  border-radius: 6px;
-}
 
 .save-button {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   border: none;
   padding: 10px 24px;
   font-size: 14px;
@@ -469,7 +498,7 @@
 }
 
 .save-button:hover {
-  background: #4338ca;
+  background: var(--accent-hover);
 }
 
 .save-button:active {
